@@ -1,0 +1,68 @@
+﻿@*<ul ng-controller="MenuController" style="background-color:black">
+        <li><a href="Home1.html">TRANG CHỦ</a></li>
+        <li>
+            <a href="#">SẢN PHẨM</a>
+            <ul>
+                <li ng-repeat="l in LoaiSPs">
+                    <a ng-click="SelectMaLoai(sp.MaLoai)" href="/SanPham/Index123">{{l.TenLoai}}</a>
+                </li>
+            </ul>
+        </li>
+        <li><a href="http://www.bantinxedien.com/" target="_blank">TIN TỨC</a></li>
+        <li><a href="introduce.html">GIỚI THIỆU</a></li>
+    </ul>*@
+
+<nav class="container">
+    <style>
+        .header{
+            
+        }
+        .container{
+            max-width: 960px;
+            margin: 0px auto;
+        }
+        nav{
+            display:flex;
+            justify-content:space-between;
+            justify-items:center;
+        }
+        #main-menu {
+            position:absolute;
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            z-index:0;
+        }
+        #main-menu li a{
+            display:block;
+            text-decoration:none;
+        }
+        #main-menu li:hover #menusp{
+            display:block;
+        }
+        .menusp{
+            background-color:black;
+            display:block !important;
+        }
+        #menusp{
+            display:none;
+        }
+        #main-menu li a{
+            background-color: #282a37;
+        }
+    </style>
+    <ul id="main-menu" ng-controller="MenuController">
+        <li><a href="Home1.html">TRANG CHỦ</a></li>
+        <li>
+            <a href="#">SẢN PHẨM</a>
+            <ul id="menusp">
+                <li class="menusp" ng-repeat="l in LoaiSPs">
+                    <a ng-click="SelectMaLoai(sp.MaLoai)" href="/Customer/TimKiemTheoLoai">{{l.TenLoai}}</a>
+                </li>
+            </ul>
+        </li>
+        <li><a href="http://www.bantinxedien.com/" target="_blank">TIN TỨC</a></li>
+        <li><a href="introduce.html">GIỚI THIỆU</a></li>
+    </ul>
+</nav>

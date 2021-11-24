@@ -1,0 +1,115 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Quan ly san pham</h1>
+        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+            <i class="fas fa-download fa-sm text-white-50"></i>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal">
+                Add new
+            </button>
+        </a>
+    </div>
+    <!-- Content Row -->
+
+    <div class="row">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Ma SP</th>
+                    <th scope="col">Ten SP</th>
+                    <th scope="col">Ma Loai</th>
+                    <th scope="col">So Luong</th>
+                    <th scope="col">Mo Ta</th>
+                    <th scope="col">Anh</th>
+                    <th scope="col">Gia</th>
+                    <th scope="col">Sale</th>
+                    <th scope="col">Action</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="sp in SanPhams">
+                    <th scope="col">{{sp.MaSP}}</th>
+                    <th scope="col">{{sp.TenSP}}</th>
+                    <th scope="col">{{sp.MaLoai}}</th>
+                    <th scope="col">{{sp.SoLuong}}</th>
+                    <th scope="col">{{sp.MoTa}}</th>
+                    <th scope="col"><img src="~/Images/{{sp.Anh}}" style="width:70px;height:70px"/></th>
+                    <th scope="col">{{sp.Gia}}</th>
+                    <th scope="col">{{sp.Sale}}</th>
+                    <th>
+                        <button ng-click="Delete(sp)" data-toggle="modal" data-target="#deleteModal" style="width:50px;margin-right:5px"><i class="fas fa-trash-alt" style="font-size:15px"></i></button>
+                    </th>
+                    <th>
+                        <button ng-click="Edit(sp)" data-toggle="modal" data-target="#editModal" style="width:50px;margin-right:5px"><i class="fas fa-edit" style="font-size:15px"></i></button>
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+<!-- Modal -->
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table ng-model="sp">
+                    <tr>
+                        <td>Ma SP: </td>
+                        <td><input type="text" id="MaSP" value="{{sp.MaSP}}" /></td>
+                    </tr>
+                    <tr>
+                        <td>Ten SP: </td>
+                        <td><input type="text" id="TenSP" value="{{sp.TenSP}}" /></td>
+                    </tr>
+                    <tr>
+                        <td>Ma Loai: </td>
+                        @*<td>
+                                <select ng-model="LoaiSPs" ng-repeat="l in LoaiSPs">
+                                    <option>{{l.MaLoai}}</option>
+                                </select>
+                            </td>*@
+                        <td><input type="text" id="MaLoai" value="{{sp.MaLoai}}" /></td>
+                    </tr>
+                    <tr>
+                        <td>So Luong: </td>
+                        <td><input type="text" id="SoLuong" value="{{sp.SoLuong}}" /></td>
+                    </tr>
+                    <tr>
+                        <td>Don Vi: </td>
+                        <td><input type="text" id="DonVi" value="{{sp.DonVi}}" /></td>
+                    </tr>
+                    <tr>
+                        <td>Mo Ta: </td>
+                        <td><input type="text" id="MoTa" value="{{sp.MoTa}}" /></td>
+                    </tr>
+                    <tr>
+                        <td>Anh: </td>
+                        <td><input type="file" id="Anh" /></td>
+                    </tr>
+                    <tr>
+                        <td>Anh To: </td>
+                        <td><input type="file" id="AnhTo" /></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>

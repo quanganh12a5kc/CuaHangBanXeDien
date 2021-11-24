@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "TimKiemTheoLoai";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div id="mid">
+    <div id="navigation" style="position:center;z-index:5">
+        <div id="slideshow">
+            <img src="~/Images/banner1.jpg" />
+        </div>
+        <script>
+            autoSlide();
+        </script>
+    </div>
+
+    <!-- chống tràn -->
+    <div class="clearfix"></div>
+
+    <div id="content">
+
+        <div id="row" ng-controller="TimKiemTheoLoaiController">
+            <h2 style=" font-weight: 200;">
+                @Session["tenloai"]
+                <img style="width: 21px;" src="https://frontend.tikicdn.com/_desktop-next/static/img/flash.gif"
+                     alt="flash deal">
+            </h2>
+            <hr style="color: #EEEEEE; size: 1px;">
+            <div class="products">
+                <ul ng-repeat="sp in SanPhams">
+                    <li>
+                        <a href="/Customer/XemChiTietSanPham">
+                            <h4><label class="product-name">{{sp.TenSP}}</label></h4>
+                            <div class="box-img">
+                                <img class="product-img" src="~/Images/{{sp.Anh}}">
+                            </div>
+                        </a>
+                        <br>
+                        <p class="price1  product-price">{{sp.Sale}}đ</p>
+                        <p class="review">
+                            <span><strike>{{sp.Gia}}đ</strike></span>
+                        </p>
+                        <input class="btn-buy" type="button" value="Thêm vào giỏ" />
+                        <a href="/Customer/XemChiTietSanPham"><input ng-click="ChonSanPham(sp.MaSP)" class="btn-view" type="button" value="Chi tiết" /></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+

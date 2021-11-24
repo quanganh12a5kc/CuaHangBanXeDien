@@ -1,0 +1,125 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Xe điện.....</title>
+    <link rel="stylesheet" href="~/CSS/home1.css">
+    <link rel="stylesheet" href="~/font-awesome.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="~/header.js"></script>
+    <script src="~/Scripts/jquery-3.6.0.min.js"></script>
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/Controllers/CustomerController.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
+
+    <link href="~/CSS/reset.css" rel="stylesheet" />
+    <link href="~/CSS/style.css" rel="stylesheet" />
+    <link href="~/CSS/demo.css" rel="stylesheet" />
+    <script>
+        $(document).ready(function () {
+            $(".btn-buy").click(function () {
+                var p = $(this).parent();
+                var pImg = p.find(".product-img").attr("src");
+                var pName = p.find(".product-name").text();
+                var pPrice = p.find(".product-price").text();
+
+                var product = {
+                    "name": pName,
+                    "~/Images": pImg,
+                    "price": pPrice,
+                };
+                var orderDetails = sessionStorage.getItem("order");
+                if (orderDetails != null)
+                    orderDetails += "," + JSON.stringify(product);
+                else
+                    orderDetails = JSON.stringify(product);
+                sessionStorage.setItem("order", orderDetails);
+                var c = $(".cart-amount").text();
+                var amount = Number(c) + 1;
+                $(".cart-amount").text(amount);
+
+            });
+        });
+    </script>
+
+</head>
+<body ng-app="MyApp">
+    @Html.Action("GetHeader", "Customer")
+    <!-- Phần thân -->
+    @RenderBody();
+    <!-- end -->
+    <div class="clearfix"></div>
+    <hr style="color: #EEEEEE; size: 1px;">
+    <div class="footer">
+        <div class="container-web">
+
+            <div style="padding-top: 15px" class="footer-main">
+                <div class="service footer1">
+                    <ul>
+                        <li>
+                            <div class="sales">
+                                <h5>Liên kết</h5>
+                                <p><a href="#">Sản phẩm khuyến mại</a></p>
+                                <p><a href="#">Sản phẩm nổi bật</a></p>
+                                <p><a href="#">Tất cả sản phẩm</a></p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="sales">
+                                <h5>Hỗ trợ</h5>
+                                <p><a href="trangchu.html">Trang chủ</a></p>
+                                <p><a href="#">Sản phẩm </a></p>
+                                <p><a href="tintuc.html">Tin tức</a></p>
+                                <p><a href="gioithieu.html">Giới thiệu</a></p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="sales">
+                                <h5>Dịch vụ</h5>
+                                <p><a href="#">Tìm kiếm</a></p>
+                                <p><a href="gioithieu.html">Giới thiệu</a></p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="sales">
+                                <h5>Liên hệ</h5>
+                                <a style="color:#fff" href="#">
+                                    <i class="fa fa-phone"> 0869638364</i>
+                                    <p>Đ/C:Đoàn Đào-Phù Cừ-Hưng Yên</p>
+                                    <p><i class="far fa-envelope"></i>Quangstsdung@gmail.com</p>
+                            </div>
+                            <div id="icon-footer">
+                                <a class="_blank" href="https://www.facebook.com/phut.mot.5015/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                                <a class="_blank" href="/#" target="_blank"><i class="fab fa-twitter"></i></a>
+                                <a class="_blank" href="/#" target="_blank"><i class="fa fa-rss"></i></a>
+                                <a class="_blank" href="/#" target="_blank"><i class="fab fa-youtube"></i></a>
+                                <a class="_blank" href="https://mail.google.com/mail/u/0/?pli=1#inbox?compose=GTvVlcSBnpsJhVkVXmnpmJBgZsdwFtHTQSTvJDnXWSmcsSqdnXDTKbznNfhFDXZRjnZBXqhGLZHxF" target="_blank"><i class="fab fa-google-plus-g"></i></i></a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="copy-right">
+            <div class="container-web">
+                <p style="text-align: center; color: #444444;">
+                    Copyright © 2020 by<a href="https://www.facebook.com/phut.mot.5015">
+                        Quang StS Dũng
+
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
